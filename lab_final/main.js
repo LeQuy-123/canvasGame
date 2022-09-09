@@ -60,7 +60,7 @@ window.addEventListener('load', () => {
                 this.particles = this.particles.filter((obj) => !obj.markForDelete)
             });
             if(this.particles.length > this.maxParticles) {
-                this.particles = this.particles.slice(0,this.maxParticles);
+                this.particles.length =  this.maxParticles
             }
             this.collisions.forEach((obj) => {
                 obj.update(deltaTime);
