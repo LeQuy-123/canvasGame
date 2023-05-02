@@ -149,6 +149,9 @@ class RunningLeft extends State {
             case 'RELEASE down':
                 this.player.setState(state.SITTING_LEFT)
                 break;
+            case 'PRESS up':
+                this.player.setState(state.JUMPING_LEFT)
+                break;
             default:
                 break;
         }
@@ -174,6 +177,9 @@ class RunningRight extends State {
                 break;
             case 'RELEASE down':
                 this.player.setState(state.SITTING_RIGHT)
+                break;
+            case 'PRESS up':
+                this.player.setState(state.JUMPING_RIGHT)
                 break;
             default:
                 break;
@@ -240,6 +246,15 @@ class FallingLeft extends State {
             case 'PRESS right':
                 this.player.setState(state.FALLING_RIGHT)
                 break;
+            case 'RELEASE left':
+                this.player.setState(state.FALLING_RIGHT);
+                break;
+            case 'PRESS up':
+                this.player.setState(state.JUMPING_LEFT);
+                break;
+            case 'RELEASE down':
+                this.player.setState(state.FALLING_LEFT);
+                break;
             default:
                 break;
         }
@@ -259,6 +274,15 @@ class FallingRight extends State {
         switch (input) {
             case 'PRESS left':
                 this.player.setState(state.FALLING_LEFT)
+                break;
+            case 'RELEASE right':
+                this.player.setState(state.FALLING_LEFT);
+                break;
+            case 'PRESS up':
+                this.player.setState(state.JUMPING_RIGHT);
+                break;
+            case 'RELEASE down':
+                this.player.setState(state.FALLING_RIGHT);
                 break;
             default:
                 break;

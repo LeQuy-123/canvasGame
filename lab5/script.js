@@ -150,7 +150,29 @@ const createAnimation = (e) => {
     const positionY = e.y - canvasPosition.top;
     epxlosions.push(new Epxlosion(positionX, positionY))
 }
+function restart() {
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    collisionCanvasCtx.clearRect(0, 0, collisionCanvas.width, collisionCanvas.height);
 
+    // Reset variables
+    timeToNextRaven = 0;
+    lastTime = 0;
+    ravens = [];
+    epxlosions = [];
+    scroll = 0;
+    gameOver = false;
+
+    // Start the animation loop again
+    requestAnimationFrame(animate);
+}
+// Add an event listener to restart the game when the player presses the spacebar
+window.addEventListener('keydown', function (event) {
+    console.log("🚀 ~ file: script.js:161 ~ event:", event.code)
+    if (event.code === 'Space' && gameOver) {
+        restart();
+    }
+});
 window.addEventListener('click', (e) => {
     const detectPixelColor = collisionCanvasCtx.getImageData(e.x,e.y, 1, 1);
     const pc = detectPixelColor.data;
